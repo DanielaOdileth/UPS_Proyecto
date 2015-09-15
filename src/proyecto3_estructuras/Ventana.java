@@ -901,8 +901,7 @@ public class Ventana extends javax.swing.JFrame {
                            
                         }
                     }
-//                         int m = camino(inicio, fin, grafo, warp);
-//                    System.out.println("TAMAÑO QUE RETORNA" + m);
+//                     
 
                 } else {
                     //                   JOptionPane.showMessageDialog(this, "El nombre de los planetas no es correcto", "ERROR" ,JOptionPane.ERROR_MESSAGE);

@@ -1097,9 +1097,6 @@
               <Image iconType="2" name="C:\Users\Daniela Odileth\Pictures\mn.png"/>
             </Property>
           </Properties>
-          <AccessibilityProperties>
-            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
-          </AccessibilityProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel19">
           <Properties>
