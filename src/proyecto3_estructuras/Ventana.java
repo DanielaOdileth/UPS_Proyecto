@@ -27,9 +27,6 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
 /**
  *
  * @author Daniela Odileth
@@ -42,7 +39,7 @@ public class Ventana extends javax.swing.JFrame {
     public Ventana() {
         initComponents();
         setLocationRelativeTo(null);
-        
+
         Nodo n_1 = new Nodo("Gualalandia");
         Nodo n_2 = new Nodo("Venus");
         Nodo n_3 = new Nodo("Jupiter");
@@ -75,25 +72,19 @@ public class Ventana extends javax.swing.JFrame {
         grafo.lista_nodo.add(n_2);
         grafo.lista_nodo.add(n_3);
         grafo.lista_nodo.add(n_4);
-        
+
         modelo_cb = (DefaultComboBoxModel) planeta_direccion.getModel();
-        modelo_md = (DefaultComboBoxModel) modificar_p.getModel();  
-        
-        for(int i = 0; i < grafo.getLista_nodo().size(); i++){
+        modelo_md = (DefaultComboBoxModel) modificar_p.getModel();
+
+        for (int i = 0; i < grafo.getLista_nodo().size(); i++) {
             modelo_cb.addElement(grafo.getNodo(i).getNombre());
             planeta_direccion.setModel(modelo_cb);
-            
+
             modelo_md.addElement(grafo.getNodo(i).getNombre());
             modificar_p.setModel(modelo_md);
-            
-            
+
         }
-//        for(int i = 0; i < grafo.getLista_arista().size(); i++){
-//            System.out.println("Posicion " + i + "Tamaño de la arista " + grafo.getArista(i).getValue()
-//                                + "Hijo de un lado " + grafo.getArista(i).getNodo_der().getNombre() +
-//                                "Hijo del otro lado " + grafo.getArista(i).getNodo_izq().getNombre());
-//        }
-         
+
     }
 
     /**
@@ -164,6 +155,8 @@ public class Ventana extends javax.swing.JFrame {
         jLabel38 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         reporte1 = new javax.swing.JTextArea();
+        jPanel2 = new javax.swing.JPanel();
+        jButton7 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -628,7 +621,33 @@ public class Ventana extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        jButton7.setText("Exportar");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(212, 212, 212)
+                .addComponent(jButton7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton7)
                 .addContainerGap())
         );
 
@@ -638,11 +657,16 @@ public class Ventana extends javax.swing.JFrame {
             mLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(pdf1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(mLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pdf1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         mLayout.setVerticalGroup(
             mLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pdf1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(mLayout.createSequentialGroup()
+                .addComponent(pdf1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -665,7 +689,7 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Exportar");
+        jButton2.setText("Ver Reporte");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
@@ -787,8 +811,6 @@ public class Ventana extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel20.getAccessibleContext().setAccessibleName("");
-
         jMenu1.setText("Opciones");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_6, java.awt.event.InputEvent.CTRL_MASK));
@@ -845,33 +867,34 @@ public class Ventana extends javax.swing.JFrame {
         b_tamaño.setEnabled(false);
         b_nd.setEnabled(false);
         b_ni.setEnabled(false);
-        
-       Modificar.setModal(true);
-       Modificar.pack();
-       Modificar.setLocationRelativeTo(null);
-       Modificar.setVisible(true);
+
+        Modificar.setModal(true);
+        Modificar.pack();
+        Modificar.setLocationRelativeTo(null);
+        Modificar.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-       Eliminar.setModal(true);
-       Eliminar.pack();
-       Eliminar.setLocationRelativeTo(null);
-       Eliminar.setVisible(true);
+        Eliminar.setModal(true);
+        Eliminar.pack();
+        Eliminar.setLocationRelativeTo(null);
+        Eliminar.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
-       String eliminar = t_eliminar.getText();
-       
-       for(int i = 0; i < grafo.getLista_arista().size(); i++){
-           if(grafo.getArista(i).getNodo_der().getNombre().equalsIgnoreCase(eliminar) ||
-               grafo.getArista(i).getNodo_izq().getNombre().equalsIgnoreCase(eliminar)){
-               grafo.getLista_arista().remove(i);
-           }
-       }
+        String eliminar = t_eliminar.getText();
+
+        for (int i = 0; i < grafo.getLista_arista().size(); i++) {
+            if (grafo.getArista(i).getNodo_der().getNombre().equalsIgnoreCase(eliminar)
+                    || grafo.getArista(i).getNodo_izq().getNombre().equalsIgnoreCase(eliminar)) {
+                grafo.getLista_arista().remove(i);
+            }
+        }
     }//GEN-LAST:event_jButton5MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        Nodo inicio = null, fin;
+        Nodo inicio = null;
+        Nodo fin = null;
         ArrayList<Nodo> imprimir;
         int warp;
         if (si.isSelected()) {
@@ -883,111 +906,73 @@ public class Ventana extends javax.swing.JFrame {
                     inicio = grafo.lista_nodo.get(i);
                 } else if (planeta_destino.equalsIgnoreCase(grafo.lista_nodo.get(i).getNombre())) {
                     fin = grafo.lista_nodo.get(i);
-                    //                   System.out.println("Entra");
+//                 
                     imprimir = camino(inicio, fin, grafo, warp);
-                    
-                    System.out.println("entra a la variable imprimir");
-                    System.out.println(imprimir.size());
-                    System.out.println("EL CAMINO MAS OPTIMO PARA QUE PUEDA LLEGAR A " + planeta_destino + " ES: ");
+
                     reporte1.append("Viaje con WARP \n");
                     reporte1.append("El camino mas optimo de " + planeta_origen + " a " + planeta_destino + " es: \n");
                     for (int j = 0; j < imprimir.size(); j++) {
                         System.out.println(imprimir.get(j).getNombre());
-                        if( j < imprimir.size()-1){
+                        if (j < imprimir.size() - 1) {
                             reporte1.append(imprimir.get(j).getNombre() + ", ");
-                        }else{
+                        } else {
                             reporte1.append(imprimir.get(j).getNombre());
-                            reporte1.append("/n");
-                           
+                            reporte1.append("\n");
+
                         }
                     }
-//                     
+                    reporte1.append("Con un costo de: " + temporal);
+                    reporte1.append("\n");
 
-                } else {
-                    //                   JOptionPane.showMessageDialog(this, "El nombre de los planetas no es correcto", "ERROR" ,JOptionPane.ERROR_MESSAGE);
                 }
             }
-            }else{
+        } else {
             planeta_origen = origen.getText();
             planeta_destino = destino.getText();
             warp = 3;
 
-            for(int i = 0; i < grafo.lista_nodo.size(); i++){
+            for (int i = 0; i < grafo.lista_nodo.size(); i++) {
                 if (planeta_origen.equalsIgnoreCase(grafo.lista_nodo.get(i).getNombre())) {
                     inicio = grafo.lista_nodo.get(i);
                 } else if (planeta_destino.equalsIgnoreCase(grafo.lista_nodo.get(i).getNombre())) {
                     fin = grafo.lista_nodo.get(i);
-                    //                   System.out.println("Entra");
+
                     imprimir = camino(inicio, fin, grafo, warp);
-                    System.out.println("entra a la variable imprimir");
-                    System.out.println(imprimir.size());
-                    System.out.println("EL CAMINO MAS OPTIMO PARA QUE PUEDA LLEGAR A " + planeta_destino + " ES: ");
+
                     reporte1.append("Viaje sin WARP \n");
                     reporte1.append("El camino mas optimo de " + planeta_origen + " a " + planeta_destino + " es: \n");
                     for (int j = 0; j < imprimir.size(); j++) {
                         System.out.println(imprimir.get(j).getNombre());
-                        if( j < imprimir.size()-1){
+                        if (j < imprimir.size() - 1) {
                             reporte1.append(imprimir.get(j).getNombre() + ", ");
-                        }else{
+                        } else {
                             reporte1.append(imprimir.get(j).getNombre());
                             reporte1.append("\n");
-                           
+
                         }
                     }
-//                    int m = camino(inicio, fin, grafo, warp);
-//                    System.out.println("TAMAÑO QUE RETORNA" + m);
-                }else{
-                    //                   JOptionPane.showMessageDialog(this, "El nombre de los planetas no es correcto", "ERROR" ,JOptionPane.ERROR_MESSAGE);
+                    reporte1.append("Con un costo de: " + temporal);
+                    reporte1.append("\n");
                 }
             }
         }
+        origen.setText("");
+        destino.setText("");
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-       m.setModal(true);
-       m.pack();
-       m.setLocationRelativeTo(null);
-       m.setVisible(true); 
-        
-        try {
-            Document documentoPDF = new Document();
-            JFileChooser fcs = new JFileChooser();
-            int o = fcs.showSaveDialog(this);
-            PdfWriter pdf = PdfWriter.getInstance(documentoPDF,
-                    new FileOutputStream(fcs.getSelectedFile().getPath()));
-            
-            documentoPDF.open();
-            documentoPDF.addAuthor("Daniela Osorto");
-            documentoPDF.addCreator("Odileth");
-            documentoPDF.addSubject("Documento en PDF");
-            documentoPDF.addCreationDate();
-            documentoPDF.addTitle("Reporte de Viajes");
-
-            documentoPDF.add(new Paragraph("Reporte de Viajes"));
-            documentoPDF.add(new Paragraph(new Date().toString()));
-            documentoPDF.add(new Paragraph("\n"));
-
-            BufferedImage bi = new BufferedImage(pdf1.getWidth(),
-                    pdf1.getHeight(), BufferedImage.TYPE_INT_RGB);
-            Graphics2D g = bi.createGraphics();
-            pdf1.paint(g);
-            File t = new File("./temp.png");
-            ImageIO.write(bi, "png", t);
-            documentoPDF.add(
-                    Image.getInstance("./temp.png")
-            );
-            t.delete();
-            documentoPDF.close();
-        } catch (Exception e) {
-        }
+        m.setModal(true);
+        m.pack();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-       Agregar.setModal(true);
-       Agregar.pack();
-       Agregar.setLocationRelativeTo(null);
-       Agregar.setVisible(true);
-       
+        Agregar.setModal(true);
+        Agregar.pack();
+        Agregar.setLocationRelativeTo(null);
+        Agregar.setVisible(true);
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
@@ -1025,28 +1010,25 @@ public class Ventana extends javax.swing.JFrame {
 
         planeta_direccion.setModel(modelo_cb);
         planeta_agregado.setText("");
-//        int v_n = 1;
-//        String n = v_n+"";
-//        valor.setValue(n);
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        for(int i = 0; i < grafo.getLista_nodo().size(); i++){
-            if(validar_n.equalsIgnoreCase(grafo.getNodo(i).getNombre())){
-                if(m_nombre.isEnabled()){
+        for (int i = 0; i < grafo.getLista_nodo().size(); i++) {
+            if (validar_n.equalsIgnoreCase(grafo.getNodo(i).getNombre())) {
+                if (m_nombre.isEnabled()) {
                     grafo.getNodo(i).setNombre(m_nombre.getText());
                 } else {
                     for (int j = 0; j < grafo.getNodo(i).getAristas_nodo().size(); j++) {
                         if (validar_a == grafo.getNodo(i).getAristadelNodo(j).getValue()) {
                             if (m_tamaño.isEnabled()) {
                                 grafo.getNodo(i).getAristadelNodo(j).setValue(Integer.parseInt(m_tamaño.getValue().toString()));
-                            }else if(m_derecha.isEnabled()){
-                                if(grafo.getNodo(i).getAristadelNodo(j).getNodo_der().getNombre().equalsIgnoreCase(m_derecha.getText())){
+                            } else if (m_derecha.isEnabled()) {
+                                if (grafo.getNodo(i).getAristadelNodo(j).getNodo_der().getNombre().equalsIgnoreCase(m_derecha.getText())) {
                                     Nodo nuevo = grafo.getNodo(i).getAristadelNodo(j).getNodo_der();
                                     grafo.getNodo(i).getAristadelNodo(j).setNodo_der(nuevo);
                                 }
-                            }else if(m_izquierda.isEnabled()){
-                                 if(grafo.getNodo(i).getAristadelNodo(j).getNodo_izq().getNombre().equalsIgnoreCase(m_izquierda.getText())){
+                            } else if (m_izquierda.isEnabled()) {
+                                if (grafo.getNodo(i).getAristadelNodo(j).getNodo_izq().getNombre().equalsIgnoreCase(m_izquierda.getText())) {
                                     Nodo nuevo = grafo.getNodo(i).getAristadelNodo(j).getNodo_izq();
                                     grafo.getNodo(i).getAristadelNodo(j).setNodo_izq(nuevo);
                                 }
@@ -1056,7 +1038,7 @@ public class Ventana extends javax.swing.JFrame {
                 }
             }
         }
-        
+
         m_nombre.setText("");
         m_derecha.setText("");
         m_izquierda.setText("");
@@ -1071,76 +1053,58 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void modificar_pItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_modificar_pItemStateChanged
-         String tem = (String) modificar_p.getSelectedItem();
-         validar_n = tem;
-         
+        String tem = (String) modificar_p.getSelectedItem();
+        validar_n = tem;
         if (evt.getStateChange() == 1) {
-            m_aristas.removeAllItems();
-              for (Nodo temp2 : grafo.getLista_nodo()) {
-                  if(tem.equalsIgnoreCase(temp2.getNombre())){
-                      m_nombre.setText(temp2.getNombre());
-                      
-                      m_arista = (DefaultComboBoxModel) m_aristas.getModel();
-                      for(int i = 0; i < temp2.getAristas_nodo().size();i++){
-                        if(temp2.getNombre().equalsIgnoreCase(tem)){  
+            for (Nodo temp2 : grafo.getLista_nodo()) {
+                if (tem.equalsIgnoreCase(temp2.getNombre())) {
+                    m_nombre.setText(temp2.getNombre());
+                    m_arista = (DefaultComboBoxModel) m_aristas.getModel();
+                    for (int i = 0; i < temp2.getAristas_nodo().size(); i++) {
+                        if (temp2.getNombre().equalsIgnoreCase(tem)) {
                             m_arista.addElement(temp2.getAristas_nodo().get(i).getValue());
                             m_aristas.setModel(m_arista);
-                        }else{
-                            m_aristas.remove(i);
-                            m_aristas.setModel(m_arista);
                         }
-                      }
-                  }
-              }
-//            DefaultTableModel modelotabla = (DefaultTableModel) tabla_producto.getModel();
-//            for (Producto temp2 : lista_producto) {
-//                if (temp.getNombre().equals(temp2.getNombre_comercio())) {
-//
-//                    Object[] row = {temp2.getNombre_producto(), temp2.getPrecio()};
-//                    modelotabla.addRow(row);
-//                    tabla_producto.setModel(modelotabla);
-//
-//                }
-//            }
+                    }
+                }
+            }
         }
     }//GEN-LAST:event_modificar_pItemStateChanged
 
     private void b_nombreItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_b_nombreItemStateChanged
-        if(b_nombre.isSelected()){
+        if (b_nombre.isSelected()) {
             m_nombre.setEnabled(true);
             m_aristas.setEnabled(false);
         }
     }//GEN-LAST:event_b_nombreItemStateChanged
 
     private void b_aristaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_b_aristaItemStateChanged
-//        if(b_arista.isSelected()){
-            m_aristas.setEnabled(true);
-            m_nombre.setEnabled(false);
-            b_tamaño.setEnabled(true);
-            b_ni.setEnabled(true);
-            b_nd.setEnabled(true);
-//        }
+        m_aristas.setEnabled(true);
+        m_nombre.setEnabled(false);
+        b_tamaño.setEnabled(true);
+        b_ni.setEnabled(true);
+        b_nd.setEnabled(true);
     }//GEN-LAST:event_b_aristaItemStateChanged
 
     private void b_tamañoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_b_tamañoItemStateChanged
-          m_tamaño.setEnabled(true);
-          m_derecha.setEnabled(false);
-          m_izquierda.setEnabled(false);
+        m_tamaño.setEnabled(true);
+        m_derecha.setEnabled(false);
+        m_izquierda.setEnabled(false);
     }//GEN-LAST:event_b_tamañoItemStateChanged
 
     private void m_aristasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_m_aristasItemStateChanged
-//         int tem = (int) m_arista.getSelectedItem();
-//         validar_a = tem;
-//         
-//        if (evt.getStateChange() == 1) {
-//              for (Arista temp2 : grafo.getLista_arista()) {
-//                  if(tem == temp2.getValue()){
-//                      m_tamaño.setValue(temp2.getValue());
-//                      m_derecha.setText(temp2.getNodo_der().getNombre());
-//                      m_izquierda.setText(temp2.getNodo_izq().getNombre()); 
-//                  }
-//              }
-//        }
+        int tem = (int) m_arista.getSelectedItem();
+        validar_a = tem;
+
+        if (evt.getStateChange() == 1) {
+            for (Arista temp2 : grafo.getLista_arista()) {
+                if (tem == temp2.getValue()) {
+                    m_tamaño.setValue(temp2.getValue());
+                    m_derecha.setText(temp2.getNodo_der().getNombre());
+                    m_izquierda.setText(temp2.getNodo_izq().getNombre());
+                }
+            }
+        }
     }//GEN-LAST:event_m_aristasItemStateChanged
 
     private void b_ndItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_b_ndItemStateChanged
@@ -1162,20 +1126,18 @@ public class Ventana extends javax.swing.JFrame {
         int v_x, v_y;
         int temp_x = 0, temp_y = 0;
         int vuelta = 1;
-                
+
         Graphics2D g2 = (Graphics2D) mapa.getGraphics();
         Graphics2D g3 = (Graphics2D) mapa.getGraphics();
         g2.setStroke(new BasicStroke(3.0f));
-        g.setColor( Color.RED);
-         g2.setPaint(new GradientPaint(5, 30, Color.MAGENTA, 35, 100,Color.YELLOW, true));
-         g3.setPaint(new GradientPaint(5, 30, Color.BLUE, 35, 100,Color.YELLOW, true));
-         int cantidad = 50;
-         int cantidad_n = 100;
-//          g2.setColor(Color.GREEN);
-         if(c == 0){
-             for (int i = 0; i < grafo.getLista_nodo().size(); i++) {
-             
-//            if(c < 0){
+        g.setColor(Color.RED);
+        g2.setPaint(new GradientPaint(5, 30, Color.MAGENTA, 35, 100, Color.YELLOW, true));
+        g3.setPaint(new GradientPaint(5, 30, Color.BLUE, 35, 100, Color.YELLOW, true));
+        int cantidad = 50;
+        int cantidad_n = 100;
+        if (c == 0) {
+            for (int i = 0; i < grafo.getLista_nodo().size(); i++) {
+
                 if (vuelta == 1) {
                     v_x = 1 + x.nextInt(410);
                     v_y = 1 + y.nextInt(300);
@@ -1184,20 +1146,10 @@ public class Ventana extends javax.swing.JFrame {
                     g.setFont(new Font("SansSerif", Font.PLAIN, 14));
                     g.drawString(grafo.getNodo(i).getNombre(), v_y - 15, v_x);
                     c++;
-                    
-                   temp_x = v_x;
-                   temp_y = v_y;
-//                   g3.draw(new Line2D.Double(300, 200 , 100, 300));
-//                 for (int j = 0; j < grafo.getLista_arista().size(); j++) {
-//                    if(grafo.getArista(j).getNodo_der().getNombre().equalsIgnoreCase(grafo.getNodo(i).getNombre()) ||
-//                       grafo.getArista(j).getNodo_izq().getNombre().equalsIgnoreCase(grafo.getNodo(i).getNombre())){
-//                        
-//                           g2.draw(new Line2D.Double(v_y, v_x , v_x, v_y));
-//                    }
-//                       
-//                 }
-//                 c++;
-                   vuelta = 2;
+
+                    temp_x = v_x;
+                    temp_y = v_y;
+                    vuelta = 2;
                 } else {
                     v_x = 10 + x.nextInt(mapa.getX());
                     v_y = 80 + y.nextInt(mapa.getY());
@@ -1207,59 +1159,11 @@ public class Ventana extends javax.swing.JFrame {
                     cantidad = cantidad + 50;
                     cantidad_n = cantidad_n + 100;
                     c++;
-                    g3.draw(new Line2D.Double(temp_y, temp_x , v_y, v_x));
-                    
-//                    for (int j = 0; j < grafo.getLista_arista().size(); j++) {
-//                         if(/*grafo.getArista(j).getNodo_der().getNombre().equalsIgnoreCase(grafo.getNodo(i-1).getNombre()) ||
-//                            grafo.getArista(j).getNodo_izq().getNombre().equalsIgnoreCase(grafo.getNodo(i-1).getNombre()) &&*/
-//                            (grafo.getArista(j).getNodo_der().getNombre().equalsIgnoreCase(grafo.getNodo(i).getNombre()) ||
-//                            grafo.getArista(j).getNodo_izq().getNombre().equalsIgnoreCase(grafo.getNodo(i).getNombre())) ){
-//
-//                                g3.draw(new Line2D.Double(v_y, v_x , temp_x, temp_y));
-//                         }
-//                     }
+                    g3.draw(new Line2D.Double(temp_y, temp_x, v_y, v_x));
                 }
-//                c++;
-//            }else{
-//                i = cantidad;
-//                  if (vuelta == 1) {
-//                    v_x = 1 + x.nextInt(450);
-//                    v_y = 1 + y.nextInt(350);
-//                    System.out.println("EN X " + mapa.getX() + " EN Y " + mapa.getY());
-//                    g2.fill(new Ellipse2D.Double(v_y, v_x, 30, 30));
-//                    g.setFont(new Font("SansSerif", Font.PLAIN, 14));
-//                    g.drawString(grafo.getNodo(i).getNombre(), v_y - 15, v_x);
-//                   
-//                 for (int j = 0; j < grafo.getLista_arista().size(); j++) {
-//                    if(grafo.getArista(j).getNodo_der().getNombre().equalsIgnoreCase(grafo.getNodo(i).getNombre()) ||
-//                       grafo.getArista(j).getNodo_izq().getNombre().equalsIgnoreCase(grafo.getNodo(i).getNombre())){
-//                        
-//                           g2.draw(new Line2D.Double(v_y, v_x , v_x, v_y));
-//                    }
-//                       
-//                 }
-//                 c++;
-//                } else {
-//                    v_x = 10 + x.nextInt(mapa.getX());
-//                    v_y = 80 + y.nextInt(mapa.getY());
-//                    g2.fill(new Ellipse2D.Double(v_y, v_x, 30, 30));
-//                    g.setFont(new Font("SansSerif", Font.PLAIN, 14));
-//                    g.drawString(grafo.getNodo(i).getNombre(), v_y - 10, v_x + 80);
-//                    cantidad = cantidad + 50;
-//                    cantidad_n = cantidad_n + 100;
-//                }
-//                c++;
-//            }
-
-//           g2.fill(new Ellipse2D.Double(40 ,80, 30, 30));
-//           g3.fill(new Ellipse2D.Double(50,10 , 30, 30));
-//           g3.fill(new Ellipse2D.Double(400, 400, 30, 30));
-//           g3.fill(new Ellipse2D.Double(450, 350, 30, 30));
-//                c=1;
-             }
-            }else{
-              for (int i = c; i < grafo.getLista_nodo().size(); i++) {
-//            if(c < 0){
+            }
+        } else {
+            for (int i = c; i < grafo.getLista_nodo().size(); i++) {
                 if (vuelta == 1) {
                     v_x = 1 + x.nextInt(400);
                     v_y = 1 + y.nextInt(300);
@@ -1267,16 +1171,8 @@ public class Ventana extends javax.swing.JFrame {
                     g2.fill(new Ellipse2D.Double(v_y, v_x, 30, 30));
                     g.setFont(new Font("SansSerif", Font.PLAIN, 14));
                     g.drawString(grafo.getNodo(i).getNombre(), v_y - 15, v_x);
-                   
-//                 for (int j = 0; j < grafo.getLista_arista().size(); j++) {
-//                    if(grafo.getArista(j).getNodo_der().getNombre().equalsIgnoreCase(grafo.getNodo(i).getNombre()) ||
-//                       grafo.getArista(j).getNodo_izq().getNombre().equalsIgnoreCase(grafo.getNodo(i).getNombre())){
-//                        
-//                           g2.draw(new Line2D.Double(v_y, v_x , v_x, v_y));
-//                    }
-//                       
-//                 }
-                 c++;
+
+                    c++;
                 } else {
                     v_x = 10 + x.nextInt(mapa.getX());
                     v_y = 80 + y.nextInt(mapa.getY());
@@ -1287,25 +1183,45 @@ public class Ventana extends javax.swing.JFrame {
                     cantidad_n = cantidad_n + 100;
                 }
                 c++;
-              }
-         }
-
-             
-//              g2.draw(new Line2D.Double(252, 70 , 100, 70));
-         
-//            g2.setColor(Color.GREEN);
-//             g2.draw(new Line2D.Double(252, 70 , 100, 70));
-//              g2.draw(new Line2D.Double(70, 252, 70, 120));
-//              //PROBANDO LA LINEA
-//              g2.draw(new Line2D.Double(252, 300 , 120, 300));
-//              g2.draw(new Line2D.Double(300, 252 , 300, 120));
-//              //Cruzadas
-//              g2.draw(new Line2D.Double(270, 107, 107, 270));
-//              g2.draw(new Line2D.Double(270, 270, 85, 85));
-              
-//        g.fillOval(100, 50, 90, 90);
-       
+            }
+        }
     }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        try {
+            Document documentoPDF = new Document();
+            JFileChooser fcs = new JFileChooser();
+            int o = fcs.showSaveDialog(this);
+            PdfWriter pdf = PdfWriter.getInstance(documentoPDF,
+                    new FileOutputStream(fcs.getSelectedFile().getPath()));
+
+            documentoPDF.open();
+            documentoPDF.addAuthor("Daniela Osorto");
+            documentoPDF.addCreator("Odileth");
+            documentoPDF.addSubject("Documento en PDF");
+            documentoPDF.addCreationDate();
+            documentoPDF.addTitle("Reporte de Viajes");
+
+            documentoPDF.add(new Paragraph("Reporte de Viajes"));
+            documentoPDF.add(new Paragraph(new Date().toString()));
+            documentoPDF.add(new Paragraph("\n"));
+
+            BufferedImage bi = new BufferedImage(pdf1.getWidth(),
+                    pdf1.getHeight(), BufferedImage.TYPE_INT_RGB);
+            Graphics2D g = bi.createGraphics();
+            pdf1.paint(g);
+            File t = new File("./temp.png");
+            ImageIO.write(bi, "png", t);
+            documentoPDF.add(
+                    Image.getInstance("./temp.png")
+            );
+            t.delete();
+            documentoPDF.close();
+        } catch (Exception e) {
+        }
+
+        reporte1.setText("");
+    }//GEN-LAST:event_jButton7MouseClicked
 
     ArrayList<Nodo> camino(Nodo nodo_principal, Nodo nodo_final, Grafo grafo, int warp) {
         System.out.println("entra al metodo del camino");
@@ -1318,45 +1234,31 @@ public class Ventana extends javax.swing.JFrame {
         int total_recorrido = 0;
 
         Nodo nodo_inicial = nodo_principal;
-//        System.out.println("Nodo del nombre inicial "+ nodo_inicial.getNombre());
-//        System.out.println("Entra al while");
-        do{
+        do {
             for (int i = 0; i < grafo.getLista_arista().size(); i++) {
                 System.out.println("POSICION DEL FOR " + i);
-//                System.out.println("Entra al for del camino");
-//                  System.out.println("Antes de entrar al segundo if"
-//                            + "Nodo de la derecha " + grafo.getArista(i).getNodo_der().getNombre() + 
-//                          "Nodo de la izquierda " + grafo.getArista(i).getNodo_izq().getNombre());
-//                  System.out.println("-----EL BOOLEAN DE LOS GRAFOS");
-//                  System.out.println(grafo.getArista(i).isVisitado());
-//                  System.out.println("---------------------------------------------");
-//                  System.out.println(nodo_inicial.getNombre());
                 if (((grafo.getArista(i).getNodo_izq().getNombre().equalsIgnoreCase(nodo_inicial.getNombre())
                         && grafo.getArista(i).getNodo_der().getNombre().equalsIgnoreCase(planeta_destino))
                         || (grafo.getArista(i).getNodo_der().getNombre().equalsIgnoreCase(nodo_inicial.getNombre())
                         && grafo.getArista(i).getNodo_izq().getNombre().equalsIgnoreCase(planeta_destino)))
                         && (!grafo.getArista(i).isVisitado())) {
                     System.out.println("PRIMER IF DEL CAMINO");
-//                    warp++; 
-                       if (warp < 3) {
-                          peso = grafo.getArista(i).getValue();
-                          cantidad++;
-                          warp++;
-                          temp_warp = peso + cantidad;
-                            if(temp_warp < total_warp){
-                                total_warp = temp_warp;
-                                total_recorrido = total_warp;
-                            }
-//                        peso = 0;
-//                       warp++;
-                        } else {
-                            peso = peso + grafo.getArista(i).getValue();
-                            System.out.println("peso " + peso);
-                            cantidad++;
-                            total_recorrido = peso + cantidad;
+                    if (warp < 3) {
+                        peso = grafo.getArista(i).getValue();
+                        cantidad++;
+                        warp++;
+                        temp_warp = peso + cantidad;
+                        if (temp_warp < total_warp) {
+                            total_warp = temp_warp;
+                            total_recorrido = total_warp;
                         }
-                    
-//                    System.out.println("Total recorrido" + total_recorrido);
+//                        peso = 0;
+                    } else {
+                        peso = peso + grafo.getArista(i).getValue();
+                        System.out.println("peso " + peso);
+                        cantidad++;
+                        total_recorrido = peso + cantidad;
+                    }
 
                     if (n == 0 || total_recorrido < temporal) {
                         temporal = total_recorrido;
@@ -1368,40 +1270,34 @@ public class Ventana extends javax.swing.JFrame {
                         cantidad = 0;
                         n = 1;
                         System.out.println("EN EL PRIMER IF LA LISTA CERRADA ORIGINAL");
-                        for(int k = 0; k < lista_cerrada.size(); k++){
+                        for (int k = 0; k < lista_cerrada.size(); k++) {
                             System.out.println(lista_cerrada.get(k).getNombre());
                         }
 
-                        //Encontrar la manera de que la lista cerrada pase a una temp
                         if (d == 0) {
-                            System.out.println("JAJAJAJAJAJA");
                             lista_final = lista_cerrada;
-                            for(int k = 0; k < lista_final.size(); k++){
-                            System.out.println(lista_final.get(k).getNombre());
+                            for (int k = 0; k < lista_final.size(); k++) {
+                                System.out.println(lista_final.get(k).getNombre());
                             }
-                            
+
                             //AL ELIMINAR NO FUNCIONA BIEN 
                             for (int k = 0; k < lista_cerrada.size(); k++) {
                                 lista_cerrada.remove(k);
                             }
                             System.out.println("TAMAÑO LISTA CERRA LA PRIMERA VEZ");
                             System.out.println(lista_cerrada.size());
-                            
-//                            for (int k = 0; k < lista_cerrada.size(); k++) {
-//                            System.out.println("LA LISTA FINAL CERRADA");
-//                                System.out.println(lista_final.get(k).getNombre());
-//                                }
+
                             d = 1;
                         } else {
                             //NO FUNCIONA ELIMINAR
                             for (int k = 0; k < lista_final.size(); k++) {
                                 lista_final.remove(k);
-                                System.out.println("CUANDO D != 0 Y ELIMINA LO DE LA LISTA FINAL EL TAMAÑO ES " +lista_final.size());
+                                System.out.println("CUANDO D != 0 Y ELIMINA LO DE LA LISTA FINAL EL TAMAÑO ES " + lista_final.size());
                             }
-                            
+
                             lista_final = lista_cerrada;
-                            for(int k = 0; k < lista_final.size(); k++){
-                            System.out.println(lista_final.get(k).getNombre());
+                            for (int k = 0; k < lista_final.size(); k++) {
+                                System.out.println(lista_final.get(k).getNombre());
                             }
                             System.out.println("Eliminando de la lista cerrada la segunda vez");
                             //NO FUNCIONA ELIMINAR
@@ -1409,17 +1305,9 @@ public class Ventana extends javax.swing.JFrame {
                                 lista_cerrada.remove(k);
                             }
                             System.out.println(lista_cerrada.size());
-                            
-//                            for(int q = 0; q < lista_cerrada.size(); q++){
-//                                lista_final.add(lista_cerrada.get(q));
-//                                System.out.println("LA LISTA FINAL");
-//                                System.out.println(lista_final.get(q).getNombre());
-//                                lista_cerrada.remove(q);
-//                            }
                         }
                     }
-//                    cantidad = 0;
-//                    lista_cerrada.add(nodo_inicial)
+//                   
                     System.out.println("tamaño lista cerrada " + lista_final.size());
                     for (int k = 0; k < lista_final.size(); k++) {
                         System.out.println("Planetas por donde debe pasar " + lista_final.get(k).getNombre());
@@ -1434,27 +1322,20 @@ public class Ventana extends javax.swing.JFrame {
                     nodo_inicial = nodo_principal;
                     i = 0;
                     m = 0;
-//                    
-//                    for(int k = 0; k < lista_cerrada.size(); k++){
-//                        if(lista_cerrada.get(k).getNombre().equalsIgnoreCase(planeta_origen)){
-//                        }else{
-//                             lista_cerrada.remove(k);
-//                        }
-//                    }
                 } else if ((grafo.getArista(i).getNodo_der().getNombre().equalsIgnoreCase(nodo_inicial.getNombre())
                         || grafo.getArista(i).getNodo_izq().getNombre().equalsIgnoreCase(nodo_inicial.getNombre()))
                         && (!grafo.getArista(i).isVisitado())) { //validar que no sea un nodo de la lista cerrada
-                  if (m == 0) {
-                      if(warp < 3){
-                          peso = grafo.getArista(i).getValue();
-                          cantidad++;
-                          warp++;
-                          temp_warp = peso + cantidad;
-                          total_warp = temp_warp;
-                      }else{
-                        peso = peso + grafo.getArista(i).getValue();
-                        cantidad++;
-                      }
+                    if (m == 0) {
+                        if (warp < 3) {
+                            peso = grafo.getArista(i).getValue();
+                            cantidad++;
+                            warp++;
+                            temp_warp = peso + cantidad;
+                            total_warp = temp_warp;
+                        } else {
+                            peso = peso + grafo.getArista(i).getValue();
+                            cantidad++;
+                        }
                         System.out.println("SEGUNDO IF DEL CAMINO");
                         System.out.println("Antes del set");
                         System.out.println(grafo.getArista(i).isVisitado());
@@ -1485,17 +1366,17 @@ public class Ventana extends javax.swing.JFrame {
                         System.out.println("entra al segundo if cuando m != 0");
                         System.out.println("DERECHA " + grafo.getArista(i).getNodo_der().getNombre());
                         System.out.println("IZQUIERDA " + grafo.getArista(i).getNodo_izq().getNombre());
-                        if(warp < 3){
+                        if (warp < 3) {
                             peso = grafo.getArista(i).getValue();
                             cantidad++;
                             warp++;
                             temp_warp = peso + cantidad;
-                            if(temp_warp < total_warp){
+                            if (temp_warp < total_warp) {
                                 total_warp = temp_warp;
                             }
-                        }else{
-                        peso = peso + grafo.getArista(i).getValue();
-                        cantidad++;
+                        } else {
+                            peso = peso + grafo.getArista(i).getValue();
+                            cantidad++;
                         }
                         if (grafo.getArista(i).getNodo_der().getNombre().equalsIgnoreCase(nodo_principal.getNombre())
                                 || grafo.getArista(i).getNodo_izq().getNombre().equalsIgnoreCase(nodo_principal.getNombre())) {
@@ -1514,7 +1395,7 @@ public class Ventana extends javax.swing.JFrame {
                         }
                         System.out.println(lista_cerrada.size() + " LISTA CERRADA");
                     }
-                
+
 //                    fin = true;
                 } else /*if(principales_aristas == nodo_principal.getAristas_nodo().size())*/ {//VALIDAR QUE TODAS LAS ARISTAS ESTEN TRUE
                     System.out.println("ULTIMO IF DEL CAMINO");
@@ -1531,8 +1412,10 @@ public class Ventana extends javax.swing.JFrame {
                             System.out.println("Entra al if");
                             System.out.println(nodo_principal.getAristadelNodo(j).isVisitado());
                             System.out.println(n_nodos);
+                        } else {
+//                            n_nodos++;
                         }
-                        if (n_nodos == /*nodo_principal.getAristas_nodo().size()*/ 3) {
+                        if (n_nodos == nodo_principal.getAristas_nodo().size() - 1) {
                             System.out.println("entra al if que cambia el while");
 
                             peso = peso + cantidad;
@@ -1541,6 +1424,9 @@ public class Ventana extends javax.swing.JFrame {
 //                            break;
                             p = 10;
                             i = grafo.getLista_arista().size();
+//                              temporal = 0;
+//                                total_recorrido = 0;
+//                                lista_cerrada.removeAll(lista_cerrada);
                         }
                     }
                 }
@@ -1548,27 +1434,23 @@ public class Ventana extends javax.swing.JFrame {
                     i = 0;
                 }
 //            fin = true;
-            //VALOR TOTAL DEL RECORRIDO
+                //VALOR TOTAL DEL RECORRIDO
 //            peso = peso + cantidad;
 //            if (n == 0 || peso < temp) {
 //                temp = peso;
 //                n = 1;
 //                peso = 0;
             }
-            
+
 //            if(p == 10){
 //              fin = true;
 //            }
-        }while(p != 10);
+        } while (p != 10);
         System.out.println(lista_final.size());
         return lista_final;
 //        return temporal;
     }
-    
-    void DibujarMapa(JFrame hola, Grafo gafo){
-            JPanel imagen;
-            
-    }
+
     /**
      * @param args the command line arguments
      */
@@ -1624,6 +1506,7 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1664,6 +1547,7 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -1702,6 +1586,6 @@ public class Ventana extends javax.swing.JFrame {
     String validar_n;
     int validar_a;
     int total_warp;
-    int d = 0;  
+    int d = 0;
     int c = 0;
 }
